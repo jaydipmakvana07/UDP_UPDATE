@@ -1,0 +1,114 @@
+@import "../../../style.scss";
+
+.post {
+  @include themify($themes) {
+    -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+    border-radius: 20px;
+    background-color: themed("bg");
+    color: themed("textColor");
+
+    .container {
+      padding: 20px;
+
+      .user {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .userInfo {
+          display: flex;
+          gap: 20px;
+
+          img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+
+          .details {
+            display: flex;
+            flex-direction: column;
+
+            .name {
+              font-weight: 500;
+            }
+
+            .date {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+
+      .content {
+        margin: 20px 0px;
+
+        img {
+          width: 100%;
+          max-height: 500px;
+          object-fit: cover;
+          margin-top: 20px;
+        }
+      }
+
+      .info {
+        display: flex;
+        align-items: center;
+        
+        gap: 20px;
+
+        .accept{
+            display: inline-block;
+            font-size: 17px;
+            padding: 5px;
+            padding-left: 12px;
+            padding-right: 12px;
+            background-color: rgb(9, 194, 9);
+            color: rgb(255, 255, 255);
+            border: 1px solid;
+            border-color: themed('bg');
+            border-radius: 10px;
+            align-items: center;
+            
+            text-align: center;
+            text-decoration: none;
+         }
+         .accept:hover{
+
+            background-color: themed('bg');
+            color: rgb(9, 194, 9);
+            border: 1px solid;
+            border-color: rgb(9, 194, 9) ;
+         }
+         .delete{
+            display: inline-block;
+            font-size: 17px;
+            padding: 5px;
+            padding-left: 12px;
+            padding-right: 12px;
+            background-color: rgb(236, 13, 13);
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 10px;
+            align-items: center;
+            border: 1px solid;
+            border-color: themed('bg');
+            
+            text-align: center;
+            text-decoration: none;
+         }
+         .delete:hover{
+
+            background-color: themed('bg');
+            color: rgb(236, 13, 13);
+            border: 1px solid;
+            border-color: rgb(236, 13, 13) ;
+         }
+      }
+      
+    }
+  }
+}
