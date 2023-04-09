@@ -28,7 +28,7 @@
       }
     }
     .profileContainer {
-      padding: 20px 70px;
+      padding: 30px 70px;
 
       @include mobile{
         padding: 10px;
@@ -82,9 +82,37 @@
 
           span {
             margin-top: 5px;
+            
             font-size: 30px;
             font-weight: 500;
           }
+          .bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .left {
+              display: flex;
+              align-items: center;
+              gap: 20px;
+    
+              .item {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                cursor: pointer;
+    
+                img {
+                  height: 20px;
+                }
+    
+                span {
+                  font-size: 15px;
+                  color: gray;
+                }
+              }
+            }
+          }
+
 
           .info {
             width: 100%;
@@ -97,9 +125,14 @@
               align-items: center;
               gap: 5px;
               color: themed("textColorSoft");
+              cursor: pointer;
+              img {
+                height: 20px;
+              }
 
               span {
-                font-size: 12px;
+                font-size: 15px;
+                align-items: center;
               }
             }
           }
