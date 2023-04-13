@@ -7,7 +7,7 @@ const Postschema = mongoose.Schema({
     },
     avtar:{
         type:String,
-        required:true,
+        required:false,
     }
 
 })

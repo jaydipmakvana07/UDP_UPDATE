@@ -1,11 +1,17 @@
 const postModel = require('../model/PostModel');
 const path = require('path');
 const fs = require('fs');
-const imgpath = path.join('uplods')
+const imgpath = path.join('uploads')
 
 const PostAdd = async (req, res) => {
     try {
-        const avtar = imgpath + '/' + req.file.filename
+        let avtar = ''
+        if(req.file==null){
+            avtar = ''
+        }
+        else{
+            avtar =imgpath + '/' + req.file.filename
+        }
         const { name } = req.body
         const data = await postModel.create({ name, avtar })
         if (data) {

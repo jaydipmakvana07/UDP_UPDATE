@@ -29,7 +29,8 @@ const Post = ({ post }) => {
         </div>
         <div className="content">
           <pre>{post.name}</pre>
-          <img src="https://s2982.pcdn.co/wp-content/uploads/2022/08/penguin-random-house-logo.png.webp" alt="" />
+          <img src={`http://localhost:8080/${post.avtar}`} alt="" />
+
         </div>
         <div className="info">
           
