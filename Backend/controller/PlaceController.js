@@ -43,6 +43,23 @@ const placeshow = async (req, res) => {
 }
 
 const placedelete = async(req,res)=>{
+    try {
+        const placeId = req.params.id; // Get the club ID from the request params
+    
+        // Use a function from your MongoDB driver to delete the club from the database
+        // For example, using Mongoose:
+        const data = await placeModel.findByIdAndDelete(placeId);
+        if (data) {
+            // Delete the club avatar file from the server
+            fs.unlinkSync(data.avtar);
+            res.status(200).send({ success: true, message: 'Post deleted successfully', data: data });
+          }
+          else {
+            res.status(404).send({ success: false, message: 'Post not found' });
+          }
+        } catch (error) {
+          res.status(500).send({ success: false, message: error.message });
+        }
      
 }
 

@@ -7,7 +7,7 @@ const Imageupload = require('../middleware/mullter')
 routes.get('/',controller.home)
 routes.post('/postAdd',Imageupload,controller.PostAdd)
 routes.get('/postshow',controller.postshow)
-routes.delete('/postshow',controller.postdelete)
+routes.delete('/postshow/:id',controller.postdelete)
 
 
 
