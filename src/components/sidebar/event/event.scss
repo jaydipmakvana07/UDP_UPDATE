@@ -11,6 +11,19 @@
 
     .container {
       padding: 20px;
+      pre{
+        word-break: break-word;
+        white-space: pre-wrap;
+        
+        overflow-x: none;
+        max-width: 100%;
+        height: auto;
+    
+        font-size: 16px;
+        
+        display: block;
+      }
+
 
       .user {
         display: flex;

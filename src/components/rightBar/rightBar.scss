@@ -22,6 +22,9 @@
 
     .container {
       padding: 20px;
+      display: flex;
+      flex-direction: column;
+     
 
       .item {
         -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
@@ -33,6 +36,7 @@
 
         span {
           color: gray;
+          font-size: 18px;
         }
 
         .user {
@@ -40,33 +44,35 @@
           align-items: center;
           justify-content: space-between;
           margin: 20px 0px;
+          
 
           .userInfo {
             display: flex;
-            align-items: center;
+            align-items: left;
+            
+           
+            color: themed("textColorSoft");
+           
+            flex-direction: column;
             gap: 20px;
-            position: relative;
+            
+            
+            
+            /* Add this line to prevent text overflow */
+            
+          
 
-            img {
-              width: 40px;
-              height: 40px;
-              border-radius: 50%;
-              object-fit: cover;
-            }
-
-            .online {
-              width: 12px;
-              height: 12px;
-              border-radius: 50%;
-              background-color: limegreen;
-              position: absolute;
-              top: 0;
-              left: 30px;
-            }
+        
 
             p {
               color: themed("textColorSoft");
+              word-break: break-word;
+              display: block;
+              white-space: pre-line;
+              
+              
             }
+            
 
             span {
               font-weight: 500;
@@ -74,26 +80,7 @@
             }
           }
 
-          .buttons {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-
-            button {
-              border: none;
-              padding: 5px;
-              color: white;
-              cursor: pointer;
-
-              &:first-child {
-                background-color: #5271ff;
-              }
-
-              &:last-child {
-                background-color: #f0544f;
-              }
-            }
-          }
+          
         }
       }
     }

@@ -18,8 +18,8 @@ const Post = ({ post }) => {
             
         </div>
         <div className="content">
-          <p>{post.desc}</p>
-          <img src={post.img} alt="" />
+          <pre>{post.name}</pre>
+          <img src={`http://localhost:8080/${post.avtar}`} alt="" />
         </div>
         <div className="info">
           

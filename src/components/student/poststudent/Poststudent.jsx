@@ -20,16 +20,17 @@ const Post = ({ post }) => {
                 to={`/profile/${post.userId}`}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-                <span className="name">{post.name}</span>
+                <span className="name">name</span>
               </Link>
-              <span className="date">1 min ago</span>
+              <span className="date"></span>
             </div>
           </div>
           <MoreHorizIcon />
         </div>
         <div className="content">
-          <p>{post.desc}</p>
-          <img src={post.img} alt="" />
+          <p>{post.name}</p>
+          <img src={`http://localhost:8080/${post.avtar}`} alt="" />
+
         </div>
         <div className="info">
 

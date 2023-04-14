@@ -45,6 +45,9 @@
 
       .content {
         margin: 20px 0px;
+        p{
+          word-break: break-word;
+        }
 
         img {
           width: 100%;
