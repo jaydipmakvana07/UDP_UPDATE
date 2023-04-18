@@ -7,9 +7,11 @@ import Posts from "../../components/posts/Posts"
 import Image from "@mui/icons-material/AddPhotoAlternateOutlined";
 
 import jaydip from "../../assets/jaydip.jpg";
-
+import{AuthContext} from "../../context/authContext"
+import { useContext, useEffect, useRef, useState } from "react";
 
 const Profile = () => {
+  const { user } = useContext(AuthContext);
   return (
     <div className="profile">
       <div className="images">
@@ -28,7 +30,7 @@ const Profile = () => {
         <div className="uInfo">
          
           <div className="center">
-            <span>Jaydip Makvana </span>
+            <span>{user.username} </span>
             
             <div className="bottom">
             <div className="left">

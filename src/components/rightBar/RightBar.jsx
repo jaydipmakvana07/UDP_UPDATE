@@ -12,7 +12,7 @@ const RightBar = () => {
       const fetchedPosts = await postServices.getPosts();
 
       setPosts(fetchedPosts);
-      console.log("Posts fetched successfully");
+      
     } catch (error) {
       console.error(error);
     }

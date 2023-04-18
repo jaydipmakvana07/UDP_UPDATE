@@ -1,17 +1,22 @@
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
+  Redirect,
   Outlet,
   Navigate,
+  useNavigate,
 } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import LeftBar from "./components/leftBar/LeftBar";
 import Leftad from "./components/admin/leftad/leftad";
 import RightBar from "./components/rightBar/RightBar";
 import Home from "./pages/home/Home";
+import Message from "./pages/message/message";
 import Student from "./pages/student/Student";
 import Profile from "./pages/profile/Profile";
 import Demo from "./pages/demo/demo";
@@ -31,8 +36,8 @@ import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/authContext";
 
 function App() {
-  const {currentUser} = useContext(AuthContext);
-
+  const {user} = useContext(AuthContext);
+  
   const { darkMode } = useContext(DarkModeContext);
 
   const Layout = () => {
@@ -83,107 +88,79 @@ function App() {
   };
 
   const ProtectedRoute = ({ children }) => {
-    if (!currentUser) {
+    if (!user) {
       return <Navigate to="/login" />;
+      console.log("user not")
+    } else {
+      // return <Navigate to="/login" />;
+      console.log(user)
     }
+   
 
     return children;
   };
 
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: (
-        <ProtectedRoute>
-          <Layout />
-        </ProtectedRoute>
-      ),
-      children: [
-        {
-          path: "/",
-          element: <Home />,
-        },
-        {
-          path: "/Student",
-          element: <Student />,
-        },
-        {
-          path: "/profile/:id",
-          element: <Profile />,
-        },
-        {
-          path: "/club",
-          element: <Club />,
-        },
-        {
-          path: "/event",
-          element: <Event />,
-        },
-        {
-          path: "/interns",
-          element: <Interns />,
-        },
-        {
-          path: "/placement",
-          element: <Placement />,
-        },
-       
-      ],
-    },
-    {
-      path: "/",
-      element: (
-        <ProtectedRoute>
-          <Layout01 />
-        </ProtectedRoute>
-      ),
-      children:[
-
-        {
-          path: "/demo",
-          element: <Demo />,
-        },
-        {
-          path: "/admin",
-          element: <Admin/>,
-        },
-        {
-          path: "/admin/club",
-          element: <Adclub/>,
-        },{
-          path: "/admin/event",
-          element: <Adevent/>,
-        },{
-          path: "/admin/intern",
-          element: <Adintern/>,
-        },{
-          path: "/admin/placement",
-          element: <Adplace/>,
-        },{
-          path: "/admin/latest",
-          element: <Adlatest/>,
-        },
-
-
-
-      ]
-
-    },
-    {
-      path: "/login",
-      element: <Login />,
-    },
-    {
-      path: "/register",
-      element: <Register />,
-    },
-   
-  ]);
+  
 
   return (
     <div>
-      <RouterProvider router={router} />
-    </div>
+    <Router>
+      
+      <Routes>
+        
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
+          <Route exact path="/" element= {<Home /> }/>
+          <Route path="/Student" element={<Student />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/club" element={<Club />} />
+          <Route path="/event" element={<Event />} />
+          <Route path="/interns" element={<Interns />} />
+          <Route path="/placement" element={<Placement />} />
+        </Route>
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Layout01 />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="/demo" element={<Demo />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/club" element={<Adclub />} />
+          <Route path="/admin/event" element={<Adevent />} />
+          <Route path="/admin/intern" element={<Adintern />} />
+          <Route path="/admin/placement" element={<Adplace />} />
+          <Route path="/admin/latest" element={<Adlatest />} />
+          
+        </Route>
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Layout02 />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="/message" element={<Message />} />
+          
+        </Route>
+        <Route path="/login" element={user ? <Navigate to="/" /> : <Login />}/>
+        <Route path="/register" element={<Register />} />
+        
+        
+      </Routes>
+      
+    </Router>
+  </div>
+
   );
 }
 

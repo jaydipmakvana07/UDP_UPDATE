@@ -20,5 +20,8 @@ app.use('/', require('./routes/eventroutes'));
 app.use('/', require('./routes/internroutes'));
 app.use('/', require('./routes/clubroutes'));
 app.use('/', require('./routes/placeroutes'));
-app.use('/api/auth', require('./routes/auth'));
+app.use('/', require('./routes/auth'));
+app.use('/conversation', require('./routes/conversationroutes'));
+app.use('/message', require('./routes/messageroutes'))
+app.use('/users', require('./routes/users'))
 app.listen(8080)

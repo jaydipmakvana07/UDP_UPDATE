@@ -102,17 +102,40 @@
 
          
         }
-        .logout{
+        .logbtn{
           color: rgb(202, 45, 45);
+          background-color: themed("bg");
           display: flex;
           align-items: center;
           gap: 10px;
+          border: none;
 
-          .text{
+        }
+        .logout{
+          color: rgb(202, 45, 45);
+          background-color: themed("bg");
+          display: flex;
+          align-items: center;
+          
+          border: none;
+          font-size: 14px;
+          :hover{
+            background-color: rgb(243, 16, 16);
+              color: aliceblue;
+              border-radius: 10px;
+              display: flex;
+            }
 
+          }
+
+          button{
+            color: rgb(202, 45, 45);
+            background-color: themed("bg");
             display: flex;
             align-items: center;
-           
+            border: none;
+            padding: 10px;
+            
             :hover{
               background-color: rgb(243, 16, 16);
               color: aliceblue;
@@ -120,10 +143,14 @@
               display: flex;
             }
 
-            span {
-              font-size: 14px;
-            }
-          }
+
+          
+
+          
+        
+    
+
+          
             
          
         }

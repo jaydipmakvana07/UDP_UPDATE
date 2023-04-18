@@ -1,0 +1,177 @@
+@import "../../style.scss";
+
+.Home{
+  @include themify($themes) {
+    padding: 20px 70px;
+    background-color: themed("bgSoft");
+
+    @include mobile {
+      padding: 10px;
+    }
+
+    @include tablet{
+      padding: 20px;
+    }
+  }
+ }
+.messenger {
+    height: calc(100vh - 70px);
+    display: flex;
+    @include themify($themes) {
+      
+      
+  
+      @include mobile {
+        padding: 10px;
+      }
+  
+      @include tablet{
+        padding: 20px;
+      }
+    }
+  }
+  
+  .chatMenu {
+    flex: 2.5;
+    @include themify($themes) {
+      
+      background-color: themed("bg");
+      color: themed("textColor");
+  
+    
+    }
+    
+  }
+  
+  .chatMenuInput {
+    width: 90%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid gray;
+    @include themify($themes) {
+      
+      background-color: themed("bg");
+      color: themed("textColor");
+  
+    
+    }
+    
+  }
+  
+  .chatBox {
+    flex: 5.5;
+    @include themify($themes) {
+      
+      background-color: themed("bgSoft");
+      color: themed("textColor");
+  
+    
+    }
+  }
+  
+  .chatBoxWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  
+  .chatBoxTop {
+    height: 100%;
+    overflow-y: scroll;
+    padding-right: 10px;
+  }
+  
+  .chatBoxBottom {
+    margin-top: 5px;
+    display: flex;
+    align-items:flex-end;
+    gap:20px;
+    padding-bottom: 20px;
+    padding-right: 50px;
+  }
+  
+  .chatMessageInput {
+    width: 80%;
+    height: 90px;
+    padding: 15px;
+    outline: none;
+    border-radius: 5px;
+    @include themify($themes) {
+      
+      background-color: themed("bgSoft");
+      color: themed("textColor");
+  
+    
+    }
+  }
+  
+  .chatSubmitButton {
+    
+    border: 1px solid;
+    border-radius: 50%;
+    align-items: center;
+    display: inline-block;
+    padding: 8px 9px;
+    padding-left: 12px;
+    
+    
+    cursor: pointer;
+    background-color: teal;
+    border-color:teal; ;
+    color: white;
+   
+  }
+  .chatSubmitButton:hover{
+    @include themify($themes) {
+    background-color: themed("bgSoft");
+    color: teal;
+    border: 1px solid;
+    border-color:teal ;
+    }
+    
+  }
+  
+  .chatSubmitButton svg {
+    width: 30px; /* set desired width for icon */
+    height: 25px; /* set desired height for icon */
+     /* inherit color from parent (button) */
+    /* additional styles for icon */
+  }
+  .chatOnline {
+    flex: 3;
+  }
+  
+  .chatMenuWrapper,
+  .chatBoxWrapper,
+  .chatOnlineWrapper {
+    padding: 10px;
+    height: 100%;
+  }
+  
+  .noConversationText {
+    position: absolute;
+    top: 10%;
+    font-size: 50px;
+    color: rgb(224, 220, 220);
+    cursor: default;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .chatMenu {
+      flex: 1;
+    }
+  
+    .chatMenuInput {
+      display: none;
+    }
+  
+    .chatBox{
+      flex: 10;
+    }
+  
+    .chatOnline{
+      flex: 1px;
+    }
+  }
+  

@@ -1,28 +1,58 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useReducer } from "react";
+import AuthReducer from "./AuthReducer";
+import logoutUser from "./AuthReducer";
+import { loginCall } from "../services/apiCalls"; // Import your API call function here
 
-export const AuthContext = createContext();
+// Initial state for the context
+const INITIAL_STATE = {
+  user: JSON.parse(localStorage.getItem("user")) || null,
+  isFetching: false,
+  error: null,
+};
 
+// Create the AuthContext
+export const AuthContext = createContext(INITIAL_STATE);
+
+// Create the AuthContextProvider
 export const AuthContextProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(
-    JSON.parse(localStorage.getItem("user")) || null
-  );
+  const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
 
-  const login = () => {
-    //TO DO
-    setCurrentUser({
-      id: 1,
-      name: "John Doe",
-      profilePic:
-        "https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    });
+  // Effect to update localStorage when user changes
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(state.user));
+  }, [state.user]);
+
+  // Custom login function
+  const login = async (credentials) => {
+    dispatch({ type: "LOGIN_START" }); // Dispatch start action
+    try {
+      // Make API call to login
+      const response = await loginCall(credentials); // Update with your actual API call
+      dispatch({ type: "LOGIN_SUCCESS", payload: response.data }); // Dispatch success action with response data
+    } catch (error) {
+      dispatch({ type: "LOGIN_FAILURE", payload: error.message }); // Dispatch failure action with error message
+    }
+  };
+  const logout = () => {
+    
+      // Dispatch the logout action
+      dispatch(logoutUser());
+   
+   // Dispatch logout action
+    localStorage.removeItem("user"); // Remove user from localStorage
   };
 
-  useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(currentUser));
-  }, [currentUser]);
-
   return (
-    <AuthContext.Provider value={{ currentUser, login }}>
+    <AuthContext.Provider
+      value={{
+        user: state.user,
+        isFetching: state.isFetching,
+        error: state.error,
+        login, 
+        logout,// Add custom login function to context
+        dispatch,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
