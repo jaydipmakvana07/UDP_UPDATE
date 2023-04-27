@@ -2,6 +2,7 @@ import "./adpost.scss";
 
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Link } from "react-router-dom";
+import { format } from "timeago.js";
 
 const Post = ({ post }) => {
   
@@ -11,6 +12,7 @@ const Post = ({ post }) => {
         method: 'DELETE'
       });
       const data = await response.json();
+      window.location.reload();
       if (data.success) {
         console.log('deleted successfully:', data.data);
         // Perform any additional actions or UI updates as needed
@@ -36,9 +38,9 @@ const Post = ({ post }) => {
                 to={`/profile/${post.userId}`}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-                <span className="name">name</span>
+                <span className="name">{post.text}</span>
               </Link>
-              <span className="date"></span>
+              <span className="date">{format(post.createdAt)}</span>
             </div>
           </div>
           <MoreHorizIcon />

@@ -3,7 +3,7 @@ import Image from "@mui/icons-material/AddPhotoAlternateOutlined";
 import Map from "@mui/icons-material/LocationOnSharp";
 import Friend from "@mui/icons-material/PersonAddAlt1Rounded";
 import Send from "@mui/icons-material/IosShareRounded";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/authContext";
 import { TextareaAutosize } from "@mui/base";
 import postServices from "../../services/postServices"
@@ -13,13 +13,18 @@ const Share = () => {
 
   const { user } = useContext(AuthContext)
   const [name, setName] = useState('')
+  const [text, setText] = useState('')
   const [avtar, setAvatar] = useState('')
+  useEffect(() => {
+    setText(user.username);
+  }, [user.username]);
 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
     formData.append('name', name);
+    formData.append('text', text);
     if (avtar) {
       formData.append('avtar', avtar);
     }
@@ -29,6 +34,8 @@ const Share = () => {
     const response = await postServices.create(formData);
     console.log(response);
     event.target.reset();
+    window.location.reload();
+
     
   }
   return (

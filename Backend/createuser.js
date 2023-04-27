@@ -7,8 +7,8 @@ const createUser = async () => {
   try {
     // Create a new user
     const newUser = new User({
-      username: 'arpit',
-      email: 'arpit@example.com',
+      username: 'JAYDIP MAKVANA',
+      email: 'jaydip@example.com',
       password: '123456',
       // Add other required properties as needed
     });

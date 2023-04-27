@@ -4,12 +4,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 
 import {
-  createBrowserRouter,
-  RouterProvider,
-  Redirect,
+  
   Outlet,
   Navigate,
-  useNavigate,
+  
 } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import LeftBar from "./components/leftBar/LeftBar";
@@ -91,10 +89,7 @@ function App() {
     if (!user) {
       return <Navigate to="/login" />;
       console.log("user not")
-    } else {
-      // return <Navigate to="/login" />;
-      console.log(user)
-    }
+    } 
    
 
     return children;

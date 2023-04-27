@@ -27,6 +27,7 @@ const LeftBar = () => {
   const { user } = useContext(AuthContext);
   const handleLogout = () => {
     localStorage.removeItem("user");// Call the logout function from AuthContext
+    window.location.reload();
   };
 
   return (

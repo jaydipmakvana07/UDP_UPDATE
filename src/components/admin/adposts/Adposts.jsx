@@ -16,12 +16,12 @@ const Posts = () => {
     const fetchedPosts = await postServices.getPosts();
     
     setPosts(fetchedPosts);
-    console.log("Posts fetched successfully");
+    
     
   }catch (error) {
     console.error(error);
   };}
-  console.log(fetchPosts)
+  
 
   useEffect(() => {
     fetchPosts();

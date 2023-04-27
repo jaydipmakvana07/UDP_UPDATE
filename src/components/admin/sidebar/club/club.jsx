@@ -1,7 +1,6 @@
 import "./club.scss";
 
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import { Link } from "react-router-dom";
+
 
 const Post = ({ post }) => {
   const handleDelete = async () => {
@@ -10,6 +9,7 @@ const Post = ({ post }) => {
         method: 'DELETE'
       });
       const data = await response.json();
+      window.location.reload();
       if (data.success) {
         console.log('Club deleted successfully:', data.data);
         // Perform any additional actions or UI updates as needed

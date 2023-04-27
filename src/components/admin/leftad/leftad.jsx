@@ -23,6 +23,10 @@ import React from 'react';
 const LeftBar = () => {
 
   const { user } = useContext(AuthContext);
+  const handleLogout = () => {
+    localStorage.removeItem("user");// Call the logout function from AuthContext
+    window.location.reload();
+  };
 
   return (
     <div className="leftBar">
@@ -98,15 +102,16 @@ const LeftBar = () => {
               <span>Setting</span>
             </div>   
           </div>
-          <div className="logout">
+          <div className="logbtn">
 
             
             <Logout/>
-            <Link to="/login" className="link" style={{ textDecoration: "none" , color:"rgb(202, 45, 45)"}}>
-            <div className="text">
-              <span>Log Out</span>
-            </div>   
-            </Link>
+            <div className="logout">
+              <button  onClick={handleLogout}>
+                Logout
+              </button>
+            </div>
+           
             
           </div>
         

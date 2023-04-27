@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+
 import { AuthContext } from "../../context/authContext";
 import "./login.scss";
 import { loginCall } from "../../services/apiCalls";
@@ -8,7 +8,7 @@ const Login = () => {
   const username = useRef();
   const password = useRef();
   const { isFetching, dispatch } = useContext(AuthContext);
-  const navigate = useNavigate(); // Get navigate function from react-router-dom
+   // Get navigate function from react-router-dom
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -39,7 +39,7 @@ const Login = () => {
             </select>
             <input type="text" placeholder="Username" ref={username} />
             <input type="password" placeholder="Password" ref={password} />
-            <Link to="/profile">Forgot Password?</Link>
+            
             <button type="submit" disabled={isFetching}>
               {isFetching ? "Logging in..." : "Login"}
             </button>

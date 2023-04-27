@@ -29,6 +29,7 @@ const Share = () => {
     const response = await postServices.create(formData);
     console.log(response);
     event.target.reset();
+    window.location.reload();
     
   }
   return (

@@ -13,7 +13,8 @@ const PostAdd = async (req, res) => {
             avtar =imgpath + '/' + req.file.filename
         }
         const { name } = req.body
-        const data = await postModel.create({ name, avtar })
+        const {text} = req.body
+        const data = await postModel.create({ name,text, avtar })
         if (data) {
             res.status(200).send({ success: true, message: 'posted successfully', data: data })
         }
